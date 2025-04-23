@@ -10,7 +10,7 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 
 def load_data():
-    base_path = Path(__file__).resolve().parent
+    base_path = Path(__file__).resolve().parent.parent
     input_train_path = base_path / "INPUT" / "TRAIN" / "fraud_dataset_train.xlsx"
     input_test_path = base_path / "INPUT" / "TEST" / "fraud_dataset_test.xlsx"
     train_df = pd.read_excel(input_train_path)
