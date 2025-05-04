@@ -1,5 +1,5 @@
 
-# Code Crafters ML Application with Visualizations
+# Code Crafters ML Application with Visualizations and Fixes
 import pandas as pd
 import joblib
 from pathlib import Path
@@ -9,6 +9,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.neural_network import MLPClassifier
+from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report, roc_curve, auc
 
 def load_data():
@@ -55,7 +56,7 @@ def save_results(model_name, model, X_test, y_test, test_df, test_preds, base_pa
 
     print("Test Accuracy:", accuracy_score(y_test, test_preds))
     print("Confusion Matrix:\n", confusion_matrix(y_test, test_preds))
-    print("Classification Report:\n", classification_report(y_test, test_preds))
+    print("Classification Report:\n", classification_report(y_test, test_preds, zero_division=0))
 
     plot_confusion_matrix(y_test, test_preds, model_name, output_dir)
 
@@ -63,13 +64,19 @@ def save_results(model_name, model, X_test, y_test, test_df, test_preds, base_pa
         probs = model.predict_proba(X_test)[:, 1]
         plot_roc_curve(y_test, probs, model_name, output_dir)
 
-def run_model(model_name, model_class, use_proba=False, **kwargs):
+def run_model(model_name, model_class, use_proba=False, scale=False, **kwargs):
     train_df, test_df, base_path = load_data()
     features = ["Amount", "Account_age"]
     target = "Fraud_Label"
 
     X_train, y_train = train_df[features], train_df[target]
     X_test, y_test = test_df[features], test_df[target]
+
+    # Apply scaling for ANN and SVM
+    if scale:
+        scaler = StandardScaler()
+        X_train = scaler.fit_transform(X_train)
+        X_test = scaler.transform(X_test)
 
     model = model_class(**kwargs)
     model.fit(X_train, y_train)
@@ -100,13 +107,13 @@ def main():
     choice = input("Enter your choice (1-5): ")
 
     if choice == '1':
-        run_model("decision_tree", DecisionTreeClassifier, use_proba=False, random_state=42)
+        run_model("decision_tree", DecisionTreeClassifier, use_proba=False)
     elif choice == '2':
         run_model("knn", KNeighborsClassifier, use_proba=False, n_neighbors=5)
     elif choice == '3':
-        run_model("svm", SVC, use_proba=True, kernel='rbf', probability=True)
+        run_model("svm", SVC, use_proba=True, scale=True, kernel='rbf', probability=True)
     elif choice == '4':
-        run_model("ann", MLPClassifier, use_proba=True, hidden_layer_sizes=(10, 5), max_iter=500, random_state=42)
+        run_model("ann", MLPClassifier, use_proba=True, scale=True, hidden_layer_sizes=(10, 5), max_iter=500, random_state=42)
     elif choice == '5':
         model_name = input("Enter the model name to load (e.g., decision_tree, knn, svm, ann): ")
         load_and_predict(model_name)
