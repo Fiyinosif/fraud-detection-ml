@@ -41,20 +41,16 @@ I served as the **team leader**, responsible for:
 > Replace with actual metrics once available
 
 ## 🗂 Project Structure
-
-<pre> ## 🗂 Project Structure
+<pre> 
 fraud-detection-ml/
 ├── CODE/ # Main ML code (model training, testing, etc.)
 ├── INPUT/ # Raw and processed training/testing data
 ├── MODEL/ # Saved model parameters
 ├── OUTPUT/ # Prediction results and evaluations
 ├── DOC/ # Final report and presentation
-├── OTHER/ # Additional resources
 ├── main.py # Application entry point
 └── README.md 
 </pre>
-
-
 
 ## ✅ Conclusion
 This project helped me develop practical skills in:
