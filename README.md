@@ -40,7 +40,10 @@ I served as the **team leader**, responsible for:
 
 > Replace with actual metrics once available
 
+---
+
 ## 🗂 Project Structure
+
 cmpsML_CodeCrafters/
 ├── CODE/ # Main ML code (model training, testing, etc.)
 ├── INPUT/ # Raw and processed training/testing data
@@ -50,6 +53,8 @@ cmpsML_CodeCrafters/
 ├── OTHER/ # Additional resources
 ├── main.py # Application entry point
 └── README.md
+
+---
 
 ## ✅ Conclusion
 This project helped me develop practical skills in:
