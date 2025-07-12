@@ -1,5 +1,5 @@
 
-# Code Crafters ML Application with Visualizations and Fixes
+# ML Application with Visualizations and Fixes
 import pandas as pd
 import joblib
 from pathlib import Path
