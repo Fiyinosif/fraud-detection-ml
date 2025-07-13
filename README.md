@@ -68,4 +68,7 @@ The project follows a full ML pipeline, from preprocessing and feature selection
 
 ---
 
-## 🗂 Project Structure
+## 🧠 Lessons Learned
+- Real-world datasets often come imbalanced — requiring strategy, not just accuracy  
+- Evaluating fraud requires emphasis on **recall and precision**, not just overall correctness  
+- Managing a multi-model project requires clean structure and version control (GitHub)
