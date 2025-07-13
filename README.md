@@ -1,60 +1,71 @@
-# 🧠 Fraud Detection with Machine Learning
+# 🧠 Fraud Detection Using Machine Learning
 
 ## 📌 Project Overview
-This machine learning project detects fraudulent financial transactions using four supervised learning algorithms. It was completed as a team capstone for CMPS 4700.
+This project develops a machine learning-based application to classify financial transactions as either **fraudulent or legitimate** using four supervised learning algorithms:  
+- Artificial Neural Network (ANN)  
+- Support Vector Machine (SVM)  
+- Decision Tree (DT)  
+- k-Nearest Neighbors (K-NN)  
 
-Our application reads raw transaction data, preprocesses it, trains models, evaluates performance, and allows saved models to be reused.
+The project follows a full ML pipeline, from preprocessing and feature selection to model evaluation and result export. Built as part of the CMPS 470 Final Project by **Code Crafters**.
 
-## 🧑‍💻 My Role
-I served as the **team leader**, responsible for:
-- Coordinating project structure and task assignment
-- Implementing and testing multiple ML models
-- Organizing the GitHub repo and project workflow
-- Writing the main integration code
+---
+
+## 👨‍💻 Team Contributions
+**Fiyinfoluwa Osifala** — Model implementation, visualizations, GitHub repo management  
+**Shakurah Watson** — Data preparation and testing
+
+---
 
 ## 🧰 Tools & Technologies
-- Python
-- scikit-learn, Keras, NumPy, Pandas
-- Jupyter Notebook
-- GitHub
+- Python, scikit-learn, Keras
+- Jupyter Notebook, Excel
+- GitHub, CLI interface (command-line)
 
-## 🧪 Models Implemented
-- ✅ K-Nearest Neighbors (KNN)
-- ✅ Support Vector Machine (SVM)
-- ✅ Decision Tree (DT)
-- ✅ Artificial Neural Network (ANN)
+---
 
-## 📂 Dataset
-- Simulated financial transaction data
-- Features include transaction amount, type, location, and label (fraud or not)
+## 🧪 Dataset & Features
+- Simulated financial transactions dataset  
+- **Features used**: `Amount` and `Account_age`  
+- **Target**: `Fraud_Label` (0 = Not Fraud, 1 = Fraud)  
+- The dataset is **imbalanced** — most transactions are legitimate
+
+---
+
+## 🔄 ML Pipeline Summary
+
+| Step               | Description |
+|--------------------|-------------|
+| **1. Data Cleaning** | Removed duplicates, ensured no missing values |
+| **2. Preprocessing** | StandardScaler used only for ANN & SVM |
+| **3. Feature Selection** | Used `Amount` and `Account_age` (continuous, numeric) |
+| **4. Modeling** | Implemented ANN, SVM, K-NN, DT |
+| **5. Evaluation** | Accuracy, Precision, Recall, F1-score, AUC, Confusion Matrix |
+| **6. Output** | Saved trained models and predictions to organized folders |
+
+> 📁 Folder structure includes: `INPUT/`, `OUTPUT/`, `MODEL/`, `DOC/`, `CODE/`, and `OTHER/`
+
+---
 
 ## 📈 Model Performance
-*(Metrics from the final evaluation — update later if needed)*
 
-| Model | Accuracy | Precision | Recall |
-|-------|----------|-----------|--------|
-| KNN   | 88%      | —         | —      |
-| SVM   | 90%      | —         | —      |
-| DT    | 85%      | —         | —      |
-| ANN   | 92%      | —         | —      |
+| Model     | Accuracy | Fraud Precision | Fraud Recall | Notes |
+|-----------|----------|-----------------|---------------|-------|
+| **ANN**   | 87%      | Good             | Balanced       | Best overall performer |
+| **SVM**   | ~85%     | Perfect          | Low            | Missed some true frauds |
+| **K-NN**  | ~83%     | Perfect          | Low            | Similar to SVM |
+| **DT**    | ~80%     | 50%              | 50%            | Modest balance |
 
-> Replace with actual metrics once available
+> *Due to class imbalance, most models favored non-fraud predictions.*
+
+---
+
+## ✅ Key Insights & Challenges
+- ANN had the most balanced performance across all metrics  
+- SVM and K-NN were **high precision but low recall** (missed many frauds)  
+- Decision Trees were easy to interpret but gave moderate results  
+- Class imbalance heavily influenced results — future versions could apply **resampling** or **threshold tuning**
+
+---
 
 ## 🗂 Project Structure
-<pre> 
-fraud-detection-ml/
-├── CODE/ # Main ML code (model training, testing, etc.)
-├── INPUT/ # Raw and processed training/testing data
-├── MODEL/ # Saved model parameters
-├── OUTPUT/ # Prediction results and evaluations
-├── DOC/ # Final report and presentation
-├── main.py # Application entry point
-└── README.md 
-</pre>
-
-## ✅ Conclusion
-This project helped me develop practical skills in:
-- Data preprocessing and supervised ML
-- Implementing multiple classification models
-- Managing team workflow and GitHub collaboration
-- Organizing reproducible, production-ready ML code
